@@ -16,10 +16,10 @@ defmodule Benefits.RequestTest do
       assert Request.list_collaborators() == collaborators
     end
 
-    test "get_collaborator!/1 returns the collaborator with given id" do
+    test "get_collaborator/1 returns the collaborator with given id" do
       collaborator = insert(:collaborator)
 
-      assert Request.get_collaborator!(collaborator.id) == collaborator
+      assert {:ok, collaborator} == Request.get_collaborator(collaborator.id)
     end
 
     test "create_collaborator/1 with valid data creates a collaborator" do
@@ -55,7 +55,7 @@ defmodule Benefits.RequestTest do
 
       assert {:error, %Ecto.Changeset{}} = Request.update_collaborator(collaborator, @invalid_params)
 
-      assert collaborator == Request.get_collaborator!(collaborator.id)
+      assert {:ok, collaborator} == Request.get_collaborator(collaborator.id)
     end
   end
 end

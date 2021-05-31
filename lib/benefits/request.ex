@@ -24,18 +24,22 @@ defmodule Benefits.Request do
   @doc """
   Gets a single collaborator.
 
-  Raises `Ecto.NoResultsError` if the Collaborator does not exist.
-
   ## Examples
 
-      iex> get_collaborator!(123)
-      %Collaborator{}
+      iex> get_collaborator(existent_id)
+      {:ok, %Collaborator{}}
 
-      iex> get_collaborator!(456)
-      ** (Ecto.NoResultsError)
+      iex> get_collaborator(inexistent_id)
+      {:error, :not_found}
 
   """
-  def get_collaborator!(id), do: Repo.get!(Collaborator, id)
+  def get_collaborator(id) do
+    case Repo.get(Collaborator, id) do
+      %Collaborator{} = collaborator -> {:ok, collaborator}
+
+      nil -> {:error, :not_found}
+    end
+  end
 
   @doc """
   Creates a collaborator.

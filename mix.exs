@@ -46,6 +46,7 @@ defmodule Benefits.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:brcpfcnpj, "~> 0.2.3"},
+      {:ecto_enum, "~> 1.4"},
       {:ex_machina, "~> 2.7.0", only: :test},
       {:faker, "~> 0.16", only: :test}
     ]

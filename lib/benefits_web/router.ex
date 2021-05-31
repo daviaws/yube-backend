@@ -19,10 +19,13 @@ defmodule BenefitsWeb.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", BenefitsWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", BenefitsWeb do
+    pipe_through :api
+
+    get "/collaborator", CollaboratorController, :index
+    get "/collaborator/:id", CollaboratorController, :show
+    post "/collaborator", CollaboratorController, :create
+  end
 
   # Enables LiveDashboard only for development
   #
