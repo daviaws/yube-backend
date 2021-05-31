@@ -1,5 +1,63 @@
 # Benefits
 
+## Especificações Benefits: Collaborator (Application 1):
+
+Feature 1:
+**GET Colaborador Index**
+Lista de colaboradores 200.
+* Se nenhum: lista vazia.
+
+---
+
+Feature 2:
+**GET Colaborador:id**
+Se existir 200:
+  * Mapa com todos os atributos do colaborador incluindo id.
+  * Não inclui timestamps.
+Se não existir 404:
+  * Not Found
+
+---
+
+Feature 3:
+**POST Colaborador (create)**
+{
+  name: name,
+  surname: surname,
+  cpf: cpf,
+  image: image
+}
+
+**Validações:**
+1. Nome:
+  1. Deve ter no mínimo 3 caracteres
+  2. Requerido e não pode vir em branco.
+
+2. Sobrenome:
+  1. Deve ter no mínimo 3 caracteres
+  2. Requerido e não pode vir em branco.
+
+3. CPF
+  1. Validar formato (Brcpfcnpj)
+  2. Requerido e não pode vir em branco.
+  3. Validar unicidade.
+
+4. Imagem (url)
+  Sem validações.
+
+5. Benefício
+  1. Validar formato (enum).
+  2. Requerido e não pode vir em branco.  
+
+Estados:
+* Requisição com sucesso: 201
+* Conflito na criação (ex: 3.3): 409
+* Qualquer erro de validação 400
+ 
+
+Especificações Adicionais:
+* Dependentes (cast_assoc/3)
+
 ---
 
 ## Dependencies
