@@ -60,6 +60,14 @@ Especificações Adicionais:
 
 ---
 
+## Improve points:
+
+CI (gitlab is a good choice for its integrated CI and public runners):
+1. mix format --check-formatted
+2. mix test
+
+---
+
 ## Dependencies
 * docker == 19.03.6
 * docker-compose == 1.29.2
